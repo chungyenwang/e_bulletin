@@ -1,0 +1,46 @@
+建立虛擬環境
+create env
+
+於虛擬環境安裝django
+pip install django
+
+虛擬環境資料夾內 建立django專案資料
+mkdir e_bulletin
+
+建立django專案
+django-admin startproject e_bulletin
+
+建立應用程序(APP)
+python manage.py startapp appname
+
+將應用程序新增進專案
+編輯setting.py
+	INSTALLED_APPS = {
+
+	,'appname'
+	}
+
+定義程序模型(appname/models.py)
+	class Product(models.Model):
+		title = model.TextField()
+
+=====================================
+遞交修改至資料庫
+python manage.py makemigrations
+
+將修改上線至資料庫
+python manage.py migrate
+
+運行網頁伺服器
+python manage.py runserver
+
+瀏覽器確認網頁
+http://127.0.0.1:8000/
+
+建立最高權限使用者
+python manage.py createsuperuser
+
+登入
+http://127.0.0.1:8000/admin
+
+

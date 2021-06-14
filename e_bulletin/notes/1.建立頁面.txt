@@ -1,0 +1,39 @@
+--建立顯示頁面-- (無須makemigrations/migrate)
+
+建立pages相關資料夾
+python manage.py startapp pages
+
+編輯pages view (pages/views.py)
+from django.http import HttpResponse
+
+def homepage_view(*args, **kwargs):
+	return HttpResponse("<h1> Hello world</h1>")
+
+將homepage_view加入urls.py(e_bulletin/urls.py)
+from pages.views import homepage_view
+
+urlpatterns = {
+	path('home/', homepage_view, name ='home')
+	...
+	...
+	}
+
+--Django template強哥模板--
+
+編輯pages view (pages/views.py)
+def homepage_view(request, *args, **kwargs):
+	return render(request, "homepage.html", {})
+
+將模板路徑加入設定(setting.py)
+TEMPLATES = [
+    {  
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
+	}
+
+新增模板資料夾
+mkdir templates
+
+新增模板頁面(於templates資料夾下)
+cd e_bulletin\\templates
+echo <h1>This is homeapge</h1> > homepage.html
+
